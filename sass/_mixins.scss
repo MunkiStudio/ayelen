@@ -1,0 +1,50 @@
+@mixin oleo($weight, $size, $color, $height) {
+	font-family: 'Oleo Script Swash Caps', Helvetica, Arial, sans-serif;
+	font-weight: $weight;
+	font-size: $size;
+	color: $color;
+	text-align: center;
+	line-height: $height;
+}
+
+@mixin open-sans($weight, $size, $color, $align) {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-weight: $weight;
+	font-size: $size;
+	text-align: $align;
+	color: $color;
+}
+
+@mixin img-services($img) {
+	background: url($img) no-repeat center center;
+	height: 240px;
+	@include gridle(4);
+	@include gridle(12, mobile);
+}
+
+@mixin form-reset {
+	-webkit-appearance: none;
+	padding: none;
+	border: none;
+	border-image-source: none;
+	border-image-slice: none;
+	border-image-width: none;
+	border-image-outset: none;
+	border-image-repeat: none;
+}
+
+@mixin img-features($img) {
+	background: url($img) no-repeat top center;
+	@include gridle_centered(tablet mobile);
+	@include gridle(3);
+	height: 221px;
+	width: 221px;
+	margin: 0 10px 20px 0;
+}
+
+@mixin img-hover{
+	@include transition(0.25s);
+	&:hover {
+		background: url('../img/hover.png') no-repeat top center;
+	}
+}
