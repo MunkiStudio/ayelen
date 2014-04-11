@@ -60,7 +60,7 @@ module.exports = function (grunt) {
                 files: [
                     '<%= config.app %>/{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%= config.app %>/images/{,*/}*'
+                    '<%= config.app %>/img/{,*/}*'
                 ]
             }
         },
@@ -145,7 +145,7 @@ module.exports = function (grunt) {
             options: {
                 sassDir: '<%= config.app %>/styles',
                 cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
+                generatedImagesDir: '.tmp/img/generated',
                 // imagesDir: '<%= config.app %>/images',
                 javascriptsDir: '<%= config.app %>/scripts',
                 fontsDir: '<%= config.app %>/styles/fonts',
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 options: {
-                    generatedImagesDir: '<%= config.dist %>/images/generated',
+                    generatedImagesDir: '<%= config.dist %>/img/generated',
                     outputStyle:'compressed',
                     noLineComments:true,
                     environment:'production',
@@ -207,7 +207,7 @@ module.exports = function (grunt) {
                     src: [
                         '<%= config.dist %>/scripts/{,*/}*.js',
                         '<%= config.dist %>/styles/{,*/}*.css',
-                        '<%= config.dist %>/images/{,*/}*.*',
+                        '<%= config.dist %>/img/{,*/}*.*',
                         '<%= config.dist %>/styles/fonts/{,*/}*.*',
                         '<%= config.dist %>/*.{ico,png}'
                     ]
@@ -228,7 +228,7 @@ module.exports = function (grunt) {
         // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             options: {
-                assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
+                assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/img']
             },
             html: ['<%= config.dist %>/{,*/}*.html'],
             css: ['<%= config.dist %>/styles/{,*/}*.css']
@@ -239,9 +239,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.app %>/images',
+                    cwd: '<%= config.app %>/img',
                     src: '{,*/}*.{gif,jpeg,jpg,png}',
-                    dest: '<%= config.dist %>/images'
+                    dest: '<%= config.dist %>/img'
                 }]
             }
         },
@@ -250,9 +250,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.app %>/images',
+                    cwd: '<%= config.app %>/img',
                     src: '{,*/}*.svg',
-                    dest: '<%= config.dist %>/images'
+                    dest: '<%= config.dist %>/img'
                 }]
             }
         },
@@ -262,7 +262,7 @@ module.exports = function (grunt) {
                 options: {
                     collapseBooleanAttributes: true,
                     collapseWhitespace: true,
-                    removeAttributeQuotes: true,
+                    removeAttributeQuotes: false,
                     removeCommentsFromCDATA: true,
                     removeEmptyAttributes: true,
                     removeOptionalTags: true,
@@ -318,7 +318,7 @@ module.exports = function (grunt) {
                         'Procfile',
                         'web.js',
                         'robots.txt',
-                        'images/{,*/}*.webp',
+                        'img/{,*/}*.webp',
                         '{,*/}*.html',
                         'styles/fonts/{,*/}*.*'
                     ]
@@ -338,11 +338,20 @@ module.exports = function (grunt) {
                 }]
             },
             styles: {
-                expand: true,
-                dot: true,
-                cwd: '<%= config.app %>/styles',
-                dest: '.tmp/styles/',
-                src: '{,*/}*.css'
+                files:[{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.app %>/styles',
+                    dest: '.tmp/styles/',
+                    src: '{,*/}*.css'    
+                },{
+                    expand:true,
+                    dot:true,
+                    cwd:'<%= config.app %>/bower_components/lightbox2/css/',
+                    dest:'.tmp/styles/',
+                    src:'lightbox.css'
+                }]
+                
             }
         },
 
@@ -368,12 +377,16 @@ module.exports = function (grunt) {
             test: [
                 'copy:styles'
             ],
-            dist: [
-                'compass',
-                'copy:styles',
-                'imagemin',
-                'svgmin'
-            ]
+            dist: {
+                tasks:[
+                    'compass',
+                    'copy:styles',
+                    'imagemin',
+                    'svgmin'
+                ],options:{
+                    limit:4
+                }
+            }
         }
     });
 
@@ -415,7 +428,10 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
-        'concurrent:dist',
+        'compass',
+        'copy:styles',
+        'imagemin',
+        'svgmin',
         'autoprefixer',
         'concat',
         'cssmin',
