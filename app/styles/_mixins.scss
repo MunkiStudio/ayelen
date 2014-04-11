@@ -45,6 +45,6 @@
 @mixin img-hover{
 	@include transition(0.25s);
 	&:hover {
-		background: url('/images/hover.png') no-repeat top center;
+		background: url('/img/hover.png') no-repeat top center;
 	}
 }
