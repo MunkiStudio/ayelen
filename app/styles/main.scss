@@ -65,6 +65,7 @@ h3 {
         @include gridle_state(mobile) {
             font-size: 35px;
             line-height: 1em;
+            margin: 5px;
         }
         @include gridle_state(tablet) {
             font-size: 44px;
@@ -75,7 +76,10 @@ h3 {
         margin-top: -20px;
         text-shadow: #404040 0 0 8px;
         @include gridle_state(mobile) {
-            font-size: 22px;
+        	margin-top: 0px;
+            font-size: 20px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
     }
 }
@@ -226,7 +230,7 @@ h3 {
         height: 210px;
         margin-bottom: 20px;
     }
-    a {
+    button {
         @include open-sans(800, 22px, #fff, center);
         color: #fff;
         background: $yellow;
@@ -252,7 +256,7 @@ footer {
         padding: 18px 0;
     }
     .contacto {
-        @include gridle(10);
+        @include gridle(9);
         #ayelen-logo {
             float: left;
             height: 110px;
@@ -288,7 +292,7 @@ footer {
         }
     }
     .redes-sociales{
-        @include gridle(2);
+        @include gridle(3);
         h4 {
             @include oleo(300, 25px, #fff, 1.0em);
             margin-bottom: 0;
