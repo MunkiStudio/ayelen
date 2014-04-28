@@ -59,28 +59,30 @@ h3 {
     padding-top: 160px;
     }
     h1 {
-        @include oleo(300, 63px, #fff, 0.5em);
-        margin-top: 0;
-        text-shadow: #404040 0 0 8px;
-        @include gridle_state(mobile) {
-            font-size: 35px;
-            line-height: 1em;
-            margin: 5px;
-        }
-        @include gridle_state(tablet) {
-            font-size: 44px;
-        }
+    	@include oleo(300, 63px, #fff, 1em);
+    	margin-top: 0;
+    	text-shadow: #404040 0 0 8px;
+    	@include gridle_state(mobile) {
+    		font-size: 35px;
+    		line-height: 1em;
+    	}
+    	@include gridle_state(tablet) {
+    		font-size: 44px;
+    	}
     }
     h4 {
-        @include open-sans(300, 28px, #fff, center);
-        margin-top: -20px;
-        text-shadow: #404040 0 0 8px;
-        @include gridle_state(mobile) {
-        	margin-top: 0px;
-            font-size: 20px;
-            margin-left: 5px;
-            margin-right: 5px;
-        }
+    	@include open-sans(300, 28px, #fff, center);
+    	margin-top: -40px;
+    	text-shadow: #404040 0 0 8px;
+    	@include gridle_state(tablet) {
+    		font-size: 24px;
+    		margin-top: -30px;
+    	}
+    	@include gridle_state(mobile) {
+    		font-size: 22px;
+    		line-height: 1em;
+    		margin-top: -20px;
+    	}
     }
 }
 
@@ -131,28 +133,57 @@ h3 {
     }
     #habitaciones {
         @include img-features('/img/habitaciones.png');
-        @include img-hover;
-        @include gridle_state(mobile tablet) {
-            background: url('/img/habitaciones-2.png');
-        }
     }
     #gastronomia {
         @include img-features('/img/gastronomia.png');
-        @include img-hover;
-        @include gridle_state(mobile tablet) {
-            background: url('/img/gastronomia-2.png');
-        }
     }
     #piscina {
         @include img-features('/img/piscina.png');
-        @include img-hover;
-        @include gridle_state(mobile tablet) {
-            background: url('/img/piscina-2.png');
-        }
     }
     #lavanderia {
         @include img-features('/img/lavanderia.png');
     }
+}
+
+.btn_galeria {
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: table;
+	.mostrar {
+		@include gridle_hide();
+		@include gridle_show(mobile tablet);
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.btn {
+		@include open-sans(800, 22px, #fff, center);
+		@include gridle(12, mobile);
+		@include gridle(6, tablet);
+		@include gridle_centered(mobile);
+		@include transition(0.4s);
+		border: 3px solid #fff;
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 10px;
+		display: inline;
+		margin: 0 5px 15px 5px;
+		max-width: 100%;
+		border-radius: 5px;
+		@include gridle_state(tablet) {
+			max-width: 200px;
+			background: rgba(0, 0, 0, .40)
+		}
+		@include gridle_state(mobile) {
+			background: rgba(0, 0, 0, .40)
+		}
+	}
+	.btn:hover {
+		background: rgba(0, 0, 0, .40)
+	}
+	.btn:active {
+		background: rgba(0, 0, 0, .60)
+	}
 }
 
 .ayelen {
@@ -239,7 +270,8 @@ h3 {
         padding: 5px;
         display: block;
         margin: 0;
-        width: 100%;
+        width: 104%;
+        border-radius: 5px;
         @include transition(0.4s);
         &:hover {
             background: none;

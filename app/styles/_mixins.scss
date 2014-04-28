@@ -20,6 +20,8 @@
 	height: 240px;
 	@include gridle(4);
 	@include gridle(12, mobile);
+	@include gridle_hide(mobile tablet);
+	@include gridle_show();
 }
 
 @mixin form-reset {
