@@ -180,11 +180,16 @@
         var map;
         function initialize() {
             var center, map, mapOptions, marker;
-            center = new google.maps.LatLng(-38.115194, -72.338597);
+            center = new google.maps.LatLng(-35.704611, -71.687722);
 
             mapOptions = {
               zoom: 14,
-              center: center
+              center: center,
+              mapTypeControl: false,
+              scaleControl:false,
+              scrollwheel: false,
+              draggable:false,
+              mapTypeId: google.maps.MapTypeId.SATELLITE
             };
 
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
