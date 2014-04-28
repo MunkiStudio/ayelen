@@ -15,7 +15,6 @@
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800" rel="subresource stylesheet" type='text/css'>
         <link href="http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps" rel="subresource stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Pontano+Sans" rel="subresource stylesheet" type="text/css">
-
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" type="text/css" href="styles/main.css">
         <!-- endbuild -->
@@ -45,10 +44,17 @@
             <strong>Error:</strong> <%=messages.error%>
         </div>
         <% } %>
+
+        
         <div class="welcome">
-            <div id="logo"></div>
-            <h1>¿Un largo viaje?<br />Ven a descansar a Villa Alegre</h1>
-            <h4>Vive la experiencia más relajante y natural de la séptima región.</h4>
+            <video id="video_background" poster="/img/welcome.jpg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+              <source type="video/webm" src="media/video-ayelen.m4v">
+           </video>
+           <div id="video_text">
+                <div id="logo"></div>
+                <h1>¿Un largo viaje?<br />Ven a descansar a Villa Alegre</h1>
+                <h4>Vive la experiencia más relajante y natural de la séptima región.</h4>
+            </div>
         </div>
 
         <div class="nosotros">

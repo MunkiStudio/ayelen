@@ -7,6 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+var mozjpeg = require('imagemin-mozjpeg');
 module.exports = function (grunt) {
 
     // Load grunt tasks automatically
@@ -237,6 +238,12 @@ module.exports = function (grunt) {
         // The following *-min tasks produce minified files in the dist folder
         imagemin: {
             dist: {
+                options:{
+                    optimizationLevel:4,
+                    configure:function(imagemin){
+                        imagemin.use(mozjpeg());
+                    }
+                },
                 files: [{
                     expand: true,
                     cwd: '<%= config.app %>/img',
@@ -318,9 +325,10 @@ module.exports = function (grunt) {
                         'Procfile',
                         'web.js',
                         'robots.txt',
-                        'img/{,*/}*.webp',
+                        'img/{,*/}*.*',
                         '{,*/}*.html',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/fonts/{,*/}*.*',
+                        'media/*.*'
                     ]
                 },
                 {
@@ -390,6 +398,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('minifyimg',['newer:imagemin:dist']);
 
     grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
@@ -430,8 +439,9 @@ module.exports = function (grunt) {
         'useminPrepare',
         'compass',
         'copy:styles',
-        'imagemin',
-        'svgmin',
+        // 'imagemin',
+        // 'minifyimg',
+        // 'svgmin',
         'autoprefixer',
         'concat',
         'cssmin',

@@ -45,18 +45,35 @@ h3 {
     margin-right: auto;
 }
 
+
+
+
+#video_text{
+    position:relative;
+    top:-690px;
+}
+
 .welcome {
-    background: $yellow url('/img/welcome.jpg') no-repeat center center;
+    // background: $yellow url('/img/welcome.jpg') no-repeat center center;
     width: 100%;
     height: 700px;
     position: relative;
-    background-size: cover;
     display: block;
+    #video_background{
+        background: $yellow url('/img/welcome.jpg') no-repeat center center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-size: cover;
+        display: block;
+        z-index: -1000;
+        overflow: hidden;
+    }
     #logo {
-    background: url('/img/main-logo.png') no-repeat center center;
-    height: 187px;
-    position: relative;
-    padding-top: 160px;
+        background: url('/img/main-logo.png') no-repeat center center;
+        height: 187px;
+        position: relative;
+        padding-top: 160px;
     }
     h1 {
     	@include oleo(300, 63px, #fff, 1em);
