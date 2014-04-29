@@ -45,7 +45,7 @@ app.post('/contact', function (req, res) {
     var spam = req.body.spam;
     if(spam===''){
         var email = new sendgrid.Email({
-            to:'matiasfh@gmail.com',
+            to:'contacto@ayelenhospedaje.com',
             from:from,
             subject:'Contacto desde web de Ayelen',
             text:text
