@@ -1,1 +1,0 @@
-"use strict";$(document).ready(function(){$(".close").on("click",function(a){a.stopPropagation(),a.preventDefault();var b=$(a.currentTarget).parent();b.fadeOut()})});

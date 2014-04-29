@@ -49,25 +49,30 @@ h3 {
 
 
 #video_text{
-    position:relative;
-    top:-690px;
+    position:absolute;
+    top:60px;
+    left: 10%;
+    right: 10%;
 }
 
 .welcome {
-    // background: $yellow url('/img/welcome.jpg') no-repeat center center;
+    background: $yellow url('/img/welcome.jpg') no-repeat center center;
     width: 100%;
     height: 700px;
     position: relative;
     display: block;
+    z-index: -10;
     #video_background{
+        min-height: 100%;
+        min-width: 100%;
         background: $yellow url('/img/welcome.jpg') no-repeat center center;
-        width: 100%;
-        height: 100%;
         position: relative;
         background-size: cover;
         display: block;
         z-index: -1000;
         overflow: hidden;
+        @include gridle_show();
+        @include gridle_hide(mobile tablet);
     }
     #logo {
         background: url('/img/main-logo.png') no-repeat center center;
