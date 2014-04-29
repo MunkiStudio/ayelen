@@ -395,6 +395,18 @@ module.exports = function (grunt) {
                     limit:4
                 }
             }
+        },
+        buildcontrol:{
+            dist:{
+                options:{
+                    dir:'dist',
+                    commit:true,
+                    push:true,
+                    message:'Build Ayelen from %sourceCommit%',
+                    remote:'git@heroku.com:ayelen.git',
+                    branch:'master'
+                }
+            }
         }
     });
 
@@ -457,5 +469,10 @@ module.exports = function (grunt) {
         'newer:jshint',
         'test',
         'build'
+    ]);
+
+    grunt.registerTask('deploy',[
+        'build',
+        'buildcontrol:dist'
     ]);
 };
